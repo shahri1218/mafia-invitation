@@ -580,60 +580,22 @@ function acceptMission() {
 
 
 /* =========================
-   RANDOM ROLE
+   SECRET ROLE
 ========================= */
 
 function revealRole() {
 
-    const roles = [
-
-        {
-            name: "MAFIA",
-            icon: "♠",
-            description:
-            "Eliminate the citizens without revealing your identity."
-        },
-
-        {
-            name: "CITIZEN",
-            icon: "♣",
-            description:
-            "Find the Mafia before they take control of the city."
-        },
-
-        {
-            name: "DETECTIVE",
-            icon: "♦",
-            description:
-            "Investigate suspicious players and discover the Mafia."
-        },
-
-        {
-            name: "DOCTOR",
-            icon: "♥",
-            description:
-            "Protect one player and help the citizens survive."
-        }
-
-    ];
-
-
-    const randomRole =
-        roles[Math.floor(Math.random() * roles.length)];
-
-
     document.getElementById("roleIcon")
-        .textContent = randomRole.icon;
+        .textContent = "🔒";
 
     document.getElementById("roleName")
-        .textContent = randomRole.name;
+        .textContent = "BU SIR";
 
     document.getElementById("roleDescription")
-        .textContent = randomRole.description;
-
+        .textContent = "Sizning rolingiz maxfiy saqlanadi.";
 
     document.getElementById("revealButton")
-        .textContent = "ROLE REVEALED";
+        .textContent = "SIR SAQLANADI";
 
     document.getElementById("revealButton")
         .disabled = true;
