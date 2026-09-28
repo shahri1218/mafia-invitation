@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAFIA NIGHT — Classified</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Special+Elite&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050505;
+    color: #fff;
+    font-family: 'Special Elite', monospace;
+    overflow-x: hidden;
+}
+
+/* ---------- GLOBAL ---------- */
+
+.hidden {
+    display: none !important;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* ---------- INTRO ---------- */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background:
+        radial-gradient(circle at center, #260000 0%, #090909 45%, #000 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: opacity 1s ease;
+}
+
+.intro-content {
+    width: 90%;
+    max-width: 600px;
+}
+
+.classified {
+    color: #b40000;
+    font-size: 18px;
+    letter-spacing: 8px;
+    margin-bottom: 30px;
+    animation: blink 1.5s infinite;
+}
+
+.intro-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(55px, 12vw, 110px);
+    letter-spacing: 10px;
+    font-weight: 800;
+    text-shadow: 0 0 30px rgba(180,0,0,.5);
+}
+
+.intro-subtitle {
+    margin-top: 20px;
+    color: #888;
+    letter-spacing: 3px;
+}
+
+.open-btn {
+    margin-top: 50px;
+    padding: 16px 40px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #b40000;
+    letter-spacing: 4px;
+    transition: .3s;
+}
+
+.open-btn:hover {
+    background: #b40000;
+    box-shadow: 0 0 30px rgba(180,0,0,.5);
+}
+
+@keyframes blink {
+    50% { opacity: .3; }
+}
+
+/* ---------- MAIN ---------- */
+
+#main {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.92)),
+        radial-gradient(circle at 50% 20%, #3b0000, #050505 60%);
+    padding: 70px 20px;
+    position: relative;
+}
+
+.noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .04;
+    z-index: 10;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+/* ---------- DOSSIER ---------- */
+
+.dossier {
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid #333;
+    background:
+        linear-gradient(rgba(20,20,20,.95), rgba(5,5,5,.97));
+    padding: 55px;
+    position: relative;
+    box-shadow:
+        0 0 80px rgba(0,0,0,.9),
+        0 0 40px rgba(150,0,0,.08);
+}
+
+.stamp {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    color: #b40000;
+    border: 2px solid #b40000;
+    padding: 7px 15px;
+    transform: rotate(-8deg);
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.file-number {
+    color: #666;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.main-title {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.main-title small {
+    color: #b40000;
+    letter-spacing: 6px;
+}
+
+.main-title h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(50px, 10vw, 90px);
+    letter-spacing: 8px;
+    margin-top: 10px;
+}
+
+.tagline {
+    text-align: center;
+    color: #999;
+    margin-top: 15px;
+    letter-spacing: 3px;
+}
+
+/* ---------- DETAILS ---------- */
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 70px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.detail {
+    padding: 25px 15px;
+    text-align: center;
+    border-right: 1px solid #333;
+}
+
+.detail:last-child {
+    border-right: none;
+}
+
+.detail span {
+    display: block;
+    color: #777;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.detail strong {
+    color: #fff;
+    font-size: 16px;
+}
+
+/* ---------- MESSAGE ---------- */
+
+.message {
+    margin: 60px auto;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.9;
+    color: #aaa;
+}
+
+.message strong {
+    color: #fff;
+}
+
+/* ---------- BUTTON ---------- */
+
+.mission-btn {
+    display: block;
+    margin: 30px auto;
+    padding: 18px 45px;
+    background: #8e0000;
+    border: none;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 4px;
+    transition: .3s;
+}
+
+.mission-btn:hover {
+    background: #c00000;
+    box-shadow: 0 0 40px rgba(180,0,0,.4);
+    transform: translateY(-2px);
+}
+
+/* ---------- ROLE ---------- */
+
+#roleSection {
+    max-width: 800px;
+    margin: 70px auto 0;
+    border-top: 1px solid #333;
+    padding-top: 60px;
+    text-align: center;
+}
+
+.role-title {
+    color: #777;
+    letter-spacing: 5px;
+    font-size: 13px;
+}
+
+.role-card {
+    margin: 35px auto;
+    max-width: 400px;
+    min-height: 250px;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #090909;
+    padding: 30px;
+}
+
+.role-hidden {
+    font-size: 60px;
+    color: #700000;
+    margin-bottom: 20px;
+}
+
+.role-name {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    letter-spacing: 5px;
+}
+
+.role-description {
+    color: #888;
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+.reveal-btn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 13px 30px;
+    letter-spacing: 3px;
+}
+
+.reveal-btn:hover {
+    border-color: #b40000;
+}
+
+/* ---------- FOOTER ---------- */
+
+.footer {
+    margin-top: 70px;
+    text-align: center;
+    color: #444;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.accepted {
+    color: #8d0000;
+    margin-top: 20px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 600px) {
+
+    #main {
+        padding: 30px 12px;
+    }
+
+    .dossier {
+        padding: 30px 18px;
+    }
+
+    .stamp {
+        position: relative;
+        display: inline-block;
+        right: auto;
+        top: auto;
+        margin-bottom: 20px;
+    }
+
+    .main-title {
+        margin-top: 25px;
+    }
+
+    .main-title h1 {
+        letter-spacing: 4px;
+    }
+
+    .details {
+        grid-template-columns: 1fr;
+    }
+
+    .detail {
+        border-right: none;
+        border-bottom: 1px solid #333;
+    }
+
+    .detail:last-child {
+        border-bottom: none;
+    }
+
+    .intro-title {
+        letter-spacing: 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<section id="intro">
+
+    <div class="intro-content">
+
+        <div class="classified">
+            O‘TA MAXFIY
+        </div>
+
+        <div class="intro-title">
+            MAFIA
+        </div>
+
+        <div class="intro-subtitle">
+            MAXFIY TAKLIF
+        </div>
+
+        <button class="open-btn" onclick="openFile()">
+            FAYLNI OCHISH
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN -->
+<main id="main" class="hidden">
+
+    <div class="noise"></div>
+
+    <div class="dossier">
+
+        <div class="stamp">
+            MAXFIY
+        </div>
+
+        <div class="file-number">
+            FAYL №0017 / MAFIYA KECHASI
+        </div>
+
+
+        <div class="main-title">
+
+            <small>SIZNI TAKLIF QILAMIZ</small>
+
+            <h1>
+                MAFIYA KECHASI
+            </h1>
+
+            <div class="tagline">
+                HECH KIMGA ISHONMA. HAMMADAN SHUBHALAN.
+            </div>
+
+        </div>
+
+
+        <div class="details">
+
+            <div class="detail">
+                <span>KUN</span>
+                <strong>01 OCTOBER 2026</strong>
+            </div>
+
+            <div class="detail">
+                <span>SOAT</span>
+                <strong>20:00</strong>
+            </div>
+
+            <div class="detail">
+                <span>MANZIL</span>
+                <strong>𝐅𝐨𝐫𝐞𝐯𝐞𝐫 𝐅𝐚𝐦</strong>
+            </div>
+
+        </div>
+
+
+        <div class="message">
+
+            <p>
+                Ushbu xabar maxfiy hisoblanadi
+            </p>
+
+            <br>
+
+            <p>
+                Siz maxfiy operatsiyada ishtirok etish uchun tanlandingiz. 🔥
+                <strong>o‘ta maxfiy mafiya operatsiyasida.</strong>
+            </p>
+
+            <br>
+
+            <p>
+                Shaxsingiz, ittifoqchilaringiz va dushmanlaringiz sirligicha qoladi. 🔥
+            </p>
+
+            <br>
+
+            <p>
+                Har narsaga tayyor bo‘ling.
+                <strong>Hech kimga ishonma. 🔥</strong>
+            </p>
+
+        </div>
+
+
+        <button class="mission-btn" onclick="acceptMission()">
+            MISSIYANI QABUL QILISH
+        </button>
+
+
+        <!-- ROLE -->
+        <section id="roleSection" class="hidden">
+
+            <div class="role-title">
+                MAXFIY TAKLIF
+            </div>
+
+            <div class="role-card">
+
+                <div id="roleIcon" class="role-hidden">
+                    ?
+                </div>
+
+                <div id="roleName" class="role-name">
+                    UNKNOWN
+                </div>
+
+                <div id="roleDescription" class="role-description">
+                    Your role is classified.
+                </div>
+
+            </div>
+
+            <button id="revealButton"
+                    class="reveal-btn"
+                    onclick="revealRole()">
+
+                    ROLIMNI OCHISH
+
+            </button>
+
+        </section>
+
+
+        <div class="footer">
+
+            WHAT HAPPENS IN MAFIA NIGHT
+            STAYS IN MAFIA NIGHT.
+
+            <div id="acceptedText" class="accepted hidden">
+                ✓ ROLIMNI OCHISH
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* =========================
+   CONFIGURATION
+========================= */
+
+const EVENT_DATE = "04 OCTOBER 2026";
+const EVENT_TIME = "20:00";
+const EVENT_LOCATION = "𝐅𝐨𝐫𝐞𝐯𝐞𝐫 𝐅𝐚𝐦";
+
+
+/* =========================
+   OPEN FILE
+========================= */
+
+function openFile() {
+
+    const intro = document.getElementById("intro");
+    const main = document.getElementById("main");
+
+    intro.style.opacity = "0";
+
+    setTimeout(() => {
+
+        intro.classList.add("hidden");
+        main.classList.remove("hidden");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }, 1000);
+}
+
+
+/* =========================
+   ACCEPT MISSION
+========================= */
+
+function acceptMission() {
+
+    const roleSection =
+        document.getElementById("roleSection");
+
+    roleSection.classList.remove("hidden");
+
+    document.getElementById("acceptedText")
+        .classList.remove("hidden");
+
+    roleSection.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   RANDOM ROLE
+========================= */
+
+function revealRole() {
+
+    const roles = [
+
+        {
+            name: "MAFIA",
+            icon: "♠",
+            description:
+            "Eliminate the citizens without revealing your identity."
+        },
+
+        {
+            name: "CITIZEN",
+            icon: "♣",
+            description:
+            "Find the Mafia before they take control of the city."
+        },
+
+        {
+            name: "DETECTIVE",
+            icon: "♦",
+            description:
+            "Investigate suspicious players and discover the Mafia."
+        },
+
+        {
+            name: "DOCTOR",
+            icon: "♥",
+            description:
+            "Protect one player and help the citizens survive."
+        }
+
+    ];
+
+
+    const randomRole =
+        roles[Math.floor(Math.random() * roles.length)];
+
+
+    document.getElementById("roleIcon")
+        .textContent = randomRole.icon;
+
+    document.getElementById("roleName")
+        .textContent = randomRole.name;
+
+    document.getElementById("roleDescription")
+        .textContent = randomRole.description;
+
+
+    document.getElementById("revealButton")
+        .textContent = "ROLE REVEALED";
+
+    document.getElementById("revealButton")
+        .disabled = true;
+
+}
+
+</script>
+
+</body>
+</html>
